@@ -5,7 +5,6 @@ thisLog='./watchlog'             # 该脚本的log日志文件
 
 baseDir="."
 sleepTime=60s # 监测间隔
-cnt=800
 
 # 检查是否有我们的拉起脚本run.sh
 if [ ! -f "$baseDir/run.sh" ]; then
@@ -18,10 +17,8 @@ while [ 0 -lt 1 ]; do
 	ret=$(ps aux | grep "$grepFlag" | grep -v grep | wc -l)
 	if [ $ret -eq 0 ]; then # 如果ps找不到运行的目标进程就拉起
 		echo "$now process not exists ,restart process now... " >>"$thisLog"
-		./run.sh ${cnt}
+		./run.sh
 		echo "$now restart done ..... " >>"$thisLog"
-		cnt=$(expr $cnt - 100)
-		echo "cnt now:$cnt" >>"$thisLog"
 	else
 		echo "$now process exists , sleep $sleepTime seconds " >>"$thisLog"
 	fi
