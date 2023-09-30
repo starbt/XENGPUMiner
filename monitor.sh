@@ -21,7 +21,7 @@ while [ 0 -lt 1 ]; do
 		./run.sh ${cnt}
 		echo "$now restart done ..... " >>"$thisLog"
 		cnt=$(expr $cnt - 100)
-		echo "cnt now:$cnt"
+		echo "cnt now:$cnt" >>"$thisLog"
 	else
 		echo "$now process exists , sleep $sleepTime seconds " >>"$thisLog"
 	fi
